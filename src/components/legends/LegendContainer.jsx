@@ -4,8 +4,11 @@ import Form from "react-bootstrap/Form";
 import { data } from "../../helpers/data";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import {useState,fragment} from "react";
 
 const LegendContainer = () => {
+    const [show,setShow] = useState(false);
+    
   return (
     <div>
       <Form.Control type="search" placeholder="Search Legends" />
@@ -14,9 +17,12 @@ const LegendContainer = () => {
           {data.map((legend) => (
             // <Col xs={10} sm={8} md={6} lg={4} xl={3}> {/* Key prop eklenmeli */}
             <Col>
-              <Card>
-                <Card.Img variant="top" src={legend.img} />
-                <Card.Header>
+              <Card onClick={()=> setShow(!show)} >
+
+                {
+                    !show ? <Card.Img variant="top" src={legend.img} />:
+                    <>
+                       <Card.Header>
                   <Card.Title>{legend.name}</Card.Title>{" "}
                   {/* Legend verileri doğru şekilde kullanılmalı */}
                 </Card.Header>
@@ -25,7 +31,10 @@ const LegendContainer = () => {
                     legend.statistics.map(item=><li className="list-unstyled h5 text-start"> ⚽️{item}</li>)
                   }
                 </ul>
-                <span>{legend.official_career}</span>
+                <span>{legend.official_career}</span></>
+                }
+               
+             
               </Card>
             </Col>
           ))}

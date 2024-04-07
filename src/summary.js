@@ -80,3 +80,63 @@ const LegendContainer = () => {
 //  daha sonra card'lara resim basmak için maplediğimiz data'nın herbir legend'ını  <Card.Img variant="top" src={legend.img} /> legend.img diyerek data'daki resimleri aldık
 
 //! daha sonra statistics bilgilerini ul açarak içinde süslüye legend.statistics.map(item=><li>{item}</li>) yazarak herbir istatistiği liste olarak yazdırdık
+
+// altına  <span>{legend.official_career}</span> yazarak kariyerlerini yazdırdık
+
+
+// daha sonra sayfa açıldığında ilk başta resim gözükecek tıklayınca resim açılacak şekilde olmasını sağlamak için toggle mantığı kurmam lazım ki bu da useState ile yaparız state ismi setter veririrz.başlangıç değerine false verdik
+
+import {useState} from "react";
+
+const LegendContainer = () => {
+    const [show,setShow] = useState(false);
+    
+
+    <Card>
+
+    {
+        !show ? <Card.Img variant="top" src={legend.img} />:
+        <>
+           <Card.Header>
+      <Card.Title>{legend.name}</Card.Title>{" "}
+      {/* Legend verileri doğru şekilde kullanılmalı */}
+    </Card.Header>
+    <ul className="m-auto">
+      {
+        legend.statistics.map(item=><li className="list-unstyled h5 text-start"> ⚽️{item}</li>)
+      }
+    </ul>
+    <span>{legend.official_career}</span></>
+    }
+   
+ 
+  </Card>  //! yukarıda yaptığım işlem  card içinde js işlemi yapacağım için süslü açtım içine    !show başlangıçtaki ifadenin tersini alır.true ise img'yi göster false ise bilgileri göster 
+  //? burada fragment kullandım çünkü jsx'te birden fazla element kullanılacaksa biz container içine alırız elementleri ancak fragment kullanımı dom ağacında herhangi bir element basmayacağı için kullanılır
+{
+    !show ? <Card.Img variant="top" src={legend.img} />:
+    <>
+       <Card.Header>
+  <Card.Title>{legend.name}</Card.Title>{" "}
+  {/* Legend verileri doğru şekilde kullanılmalı */}
+</Card.Header>
+<ul className="m-auto">
+  {
+    legend.statistics.map(item=><li className="list-unstyled h5 text-start"> ⚽️{item}</li>)
+  }
+</ul>
+<span>{legend.official_career}</span></>
+}
+
+
+</Card>
+
+// map yaptığımızda bizden key prop'u ister hatırlarsan önceki derste görmüştük key.id şekilde..<> yaptığımda burada key propu veremem ancak <fragment > olarak yazarsam key prop'u verebilirim
+
+// ben yukarıda <> yerine div yazsaydım dom için gereksiz yük olacaktı.
+
+
+//! tıklayınca resimin deişmesi için onclick event'i kullanıyorum onClick={()=> setShow(!show)} burada setter'ı  render etmek için () kullandım ve içine !show diyerek true ise false veya tam tersi haline getirdim
+
+//!ANCAK onClick event'ini vereceğim yer önemli doğruca img'ye versem sadece tıklayınca resim değişiyor geriye dönmüyor. ancak bunu ya col yada card'a verince toggle çalışıyor
+
+// taşıyıcıya vererek tek bir noktaya verdi.child'lara verseydik kod kalabalığı olacaktı.mesela card header'a verecektik title verecektik
