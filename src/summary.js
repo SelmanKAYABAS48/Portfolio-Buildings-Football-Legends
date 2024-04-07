@@ -8,3 +8,11 @@
 
 
 // jsx içinde div yerine container yazarsam div className="container" demek oluyor
+
+//! eğer resim statik olarak varsa src içindeyse import etmeden kullanamayız
+
+// import ederken resmin uzantsını da yazıyoruz css varsa onun uzantısını da yazıyoruz
+
+// resim ve yazının ortalamasını istiyorsak en dış kapsayıcıya yani app js'de text center yapıyoruz
+
+// h1 etiktinde football legends yazısı var..ancak bu yazının width'i geniş. bunu display inline-block yaptık ve img ile h1 yanyana geldi sonra img ile h1 arasına br atıp inline block olan yazıyı aşağı aldık

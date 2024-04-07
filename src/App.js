@@ -5,7 +5,7 @@ import LegendContainer from "./components/legends/LegendContainer"
 
 function App() {
   return (
-    <Container> 
+    <Container className="text-center" mt-5> 
     <Header />
     <LegendContainer />
     </Container>
